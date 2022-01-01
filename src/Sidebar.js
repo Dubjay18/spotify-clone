@@ -4,7 +4,7 @@ import { useStateValue } from "./DataLayer";
 import "./Sidebar.css";
 import SidebarOptions from "./SidebarOptions";
 const Sidebar = () => {
-  const [{ playlists, ham, playlist_Id }, dispatch] = useStateValue();
+  const [{ playlists, ham }, dispatch] = useStateValue();
   const Renderplay = (e) => {
     dispatch({
       type: "SET_PLAYLISTID",
