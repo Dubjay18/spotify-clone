@@ -1,5 +1,5 @@
 import { Grid, Slider } from "@material-ui/core";
-import ab from "./images/whatsbg.jpeg";
+
 import {
   PlayCircleOutline,
   PlaylistPlay,
@@ -15,7 +15,7 @@ import { useStateValue } from "./DataLayer";
 import SpotifyWebApi from "spotify-web-api-js";
 const spotify = new SpotifyWebApi();
 const Footer = () => {
-  const [{ discover_weekly, isplaying }, dispatch] = useStateValue();
+  const [{ discover_weekly }, dispatch] = useStateValue();
   console.log(discover_weekly?.tracks.items[0].track.album.images[0].url);
 
   const handlePlayPause = () => {
