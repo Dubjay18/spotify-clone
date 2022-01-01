@@ -9,7 +9,7 @@ import { useStateValue } from "./DataLayer";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{ user, token, playlist_Id }, dispatch] = useStateValue();
+  const [{  token, playlist_Id }, dispatch] = useStateValue();
   useEffect(() => {
     const hash = getTokenFromUrl();
     window.location.hash = "";
@@ -38,7 +38,7 @@ function App() {
         });
       });
     }
-  }, [playlist_Id]);
+  });
 
   return (
     <div className="app">
