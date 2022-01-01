@@ -9,7 +9,7 @@ import { useStateValue } from "./DataLayer";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{  token, playlist_Id }, dispatch] = useStateValue();
+  const [{  token}, dispatch] = useStateValue();
   useEffect(() => {
     const hash = getTokenFromUrl();
     window.location.hash = "";
