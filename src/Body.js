@@ -16,7 +16,7 @@ const Body = ({ spotify }) => {
         discover_weekly: response,
       })
     );
-  }, [playlist_Id]);
+  }, [playlist_Id, dispatch]);
   return (
     <div className="body">
       <Header spotify={spotify} />
