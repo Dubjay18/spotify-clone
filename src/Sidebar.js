@@ -4,7 +4,14 @@ import { useStateValue } from "./DataLayer";
 import "./Sidebar.css";
 import SidebarOptions from "./SidebarOptions";
 const Sidebar = () => {
-  const [{ playlists, ham }, dispatch] = useStateValue();
+  const [{ playlists, ham, playlist_Id }, dispatch] = useStateValue();
+  const Renderplay = (e) => {
+    dispatch({
+      type: "SET_PLAYLISTID",
+      playlist_Id: e,
+    });
+  };
+
   return (
     <div className="sidebar" style={ham ? { left: "0" } : { left: "-100%" }}>
       <img
@@ -18,7 +25,14 @@ const Sidebar = () => {
       <strong className="sidebar__title">PLAYLISTS</strong>
       <hr />
       {playlists?.items?.map((playlist) => {
-        return <SidebarOptions title={playlist.name} />;
+        return (
+          <div
+            className="sidebarOption"
+            onClick={() => Renderplay(playlist.id)}
+          >
+            <p>{playlist.name}</p>
+          </div>
+        );
       })}
     </div>
   );

@@ -12,9 +12,29 @@ import {
 import React from "react";
 import "./Footer.css";
 import { useStateValue } from "./DataLayer";
+import SpotifyWebApi from "spotify-web-api-js";
+const spotify = new SpotifyWebApi();
 const Footer = () => {
-  const [{ discover_weekly }, dispatch] = useStateValue();
+  const [{ discover_weekly, isplaying }, dispatch] = useStateValue();
   console.log(discover_weekly?.tracks.items[0].track.album.images[0].url);
+
+  const handlePlayPause = () => {
+    spotify.getMyCurrentPlaybackState().then((data) => {
+      if (data.body?.is_playing) {
+        spotify.pause();
+        dispatch({
+          type: "SET_ISPLAYING",
+          isPlaying: false,
+        });
+      } else {
+        spotify.play();
+        dispatch({
+          type: "SET_ISPLAYING",
+          isPlaying: true,
+        });
+      }
+    });
+  };
   return (
     <div className="footer">
       <div className="footer__left">
@@ -35,7 +55,11 @@ const Footer = () => {
       <div className="footer__center">
         <Shuffle className="footer__green" />
         <SkipPrevious className="footer__icon" />
-        <PlayCircleOutline fontSize="large" className="footer__icon" />
+        <PlayCircleOutline
+          fontSize="large"
+          className="footer__icon"
+          onClick={handlePlayPause}
+        />
         <SkipNext className="footer__icon" />
         <Repeat className="footer__green" />
       </div>

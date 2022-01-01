@@ -1,15 +1,22 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 
-const redirectUri = " https://spotify-clone-jay.netlify.app/";
+const redirectUri = "http://localhost:3000/";
 
 const clientId = "a0c4e6dba52544b4ade5b567ac9f0839";
 
 const scopes = [
+  "user-read-email",
+  "playlist-read-private",
+  "playlist-read-collaborative",
+  "user-read-email",
+  "streaming",
+  "user-read-private",
+  "user-library-read",
   "user-read-currently-playing",
   "user-read-recently-played",
   "user-read-playback-state",
   "user-top-read",
-  "user-modify-playback-state,",
+  "user-modify-playback-state",
 ];
 export const getTokenFromUrl = () => {
   return window.location.hash

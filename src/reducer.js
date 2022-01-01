@@ -4,6 +4,9 @@ export const initialState = {
   playing: false,
   item: null,
   ham: false,
+  playlist_Id: "37i9dQZEVXcPBSIXOl8BHe",
+  isPlaying: false,
+  currentTrackId: "",
   // Remove later
   // token:
   //   "BQClXUGp9dkj9QXNGS95wtzR08fwzFKAiooOXzFB0RRVl_ctcwwPaYfGqjfA_Yl7pqxg30fQxKhzmWG3GUlvEGEJziilYCOCQ4NUhLS8yJ-OH1WyiYhFer6egEOm1nfSkuVHoIGR5HjSR1m_JoRU9aWuIly0rMUQK1GmbYsl3JKWOGlG",
@@ -14,6 +17,9 @@ export const actionTypes = {
   SET_PLAYLISTS: "SET_PLAYLISTS",
   SET_DISCOVER_WEEKLY: "SET_DISCOVER_WEEKLY",
   SET_HAM: "SET_HAM",
+  SET_PLAYLISTID: "SET_PLAYLISTID",
+  SET_ISPLAYING: "SET_ISPLAYING",
+  SET_CURRENTTRACKID: "SET_CURRENTTRACKID",
 };
 
 const reducer = (state, action) => {
@@ -25,10 +31,25 @@ const reducer = (state, action) => {
         ...state,
         user: action.user,
       };
+    case actionTypes.SET_CURRENTTRACKID:
+      return {
+        ...state,
+        currentTrackId: action.currentTrackId,
+      };
     case actionTypes.SET_TOKEN:
       return {
         ...state,
         token: action.token,
+      };
+    case actionTypes.SET_ISPLAYING:
+      return {
+        ...state,
+        isPlaying: action.isPlaying,
+      };
+    case actionTypes.SET_PLAYLISTID:
+      return {
+        ...state,
+        playlist_Id: action.playlist_Id,
       };
     case actionTypes.SET_PLAYLISTS:
       return {
